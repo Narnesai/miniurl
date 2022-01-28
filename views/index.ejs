@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
+  <title>MINI URL</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <p class="logo-title"><img src="https://upload.wikimedia.org/wikipedia/en/5/53/Kalasalingam_Academy_of_Research_and_Education_logo.png" alt=""><span>MINI URL</span></p>
+    </div>
+    <div class="form-cont">
+      <form autocomplete="off" action="/shortUrls" method="POST" class="my-4 form-inline">
+        <label for="fullUrl" class="sr-only"></label>
+        <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
+        <button class="btn btn-success" type="submit">Shrink</button>
+      </form>
+    </div>
+    <div class="table-cont">
+      <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th class="fullU">Full URL</th>
+            <th>Short URL</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortUrls.forEach(shortUrl => { %>
+            <tr>
+              <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+              <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+              <td><%= shortUrl.clicks %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <div class="empty"></div>
+  </div>
+</body>
+</html>
